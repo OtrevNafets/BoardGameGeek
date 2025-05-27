@@ -1,19 +1,23 @@
-pipeline{
+pipeline {
     agent any
 
     stages {
-        stage('Checkout'){
-            checkout scm
-        }
-        stage('Build'){
+        stage('Checkout') {
             steps {
-                echo 'Baue das Projekt'
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Baue das Projekt...'
                 sh 'mvn clean compile'
             }
         }
-        stage('Test'){
-            steps{
-                echo 'Führe test aus...'
+
+        stage('Test') {
+            steps {
+                echo 'Führe Tests aus...'
                 sh 'mvn test'
             }
             post {
@@ -23,5 +27,4 @@ pipeline{
             }
         }
     }
-
 }
