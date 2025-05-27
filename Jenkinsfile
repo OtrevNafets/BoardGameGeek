@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'MavenLokal'
+    }
+
     stages {
         stage('Checkout') {
             steps {
